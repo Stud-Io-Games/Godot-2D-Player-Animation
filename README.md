@@ -1,6 +1,6 @@
 # Godot 2D : Player Animation
 
-![dog](./icon.png)
+![dog](icon.png)
 
 ## Purpose
 
