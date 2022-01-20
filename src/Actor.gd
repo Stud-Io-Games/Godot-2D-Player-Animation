@@ -1,3 +1,4 @@
+# can be extended by an Enemy scene
 extends KinematicBody2D
 class_name Actor
 
