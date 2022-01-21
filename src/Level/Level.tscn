@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Character/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/enemy.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Level" type="Node2D"]
 
@@ -12,7 +15,17 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 65533, 0, 0, 11, 0, 0, 131069, 0, 0, 65547, 0, 0, 196605, 0, 0, 131076, 0, 0, 131083, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0 )
 
+[node name="Area2D" type="Area2D" parent="." groups=["enemy_attack"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 694, 182 )
+shape = SubResource( 1 )
+
+[node name="Enemy" type="Sprite" parent="Area2D"]
+position = Vector2( 694, 183 )
+scale = Vector2( 0.188172, 0.188172 )
+texture = ExtResource( 3 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -64, 121 )
-speed = Vector2( 400, 500 )
-gravity = 1000.0
+position = Vector2( 91, 23 )

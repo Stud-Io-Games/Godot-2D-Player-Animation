@@ -31,8 +31,23 @@ func _on_AttackHit_area_entered(area):
 	if area.is_in_group("hurtbox"):
 		area.take_damage()
 
+func _on_EnnemyDetector_area_entered(area):
+	if area.is_in_group("enemy_attack"):
+		if life_point > 0:
+			life_point -= 1
+			hurt()
+		else:
+			die()
+
 func hurt():
 	state_machine.travel(ANIMATION_HURT)
+	# obliged to stop process because physics_process will override the animation with "IDLE" or "WALK"
+	set_physics_process(false)
+
+func hurt_finished_animation():
+	# AnimationPlayer "Call Method Track" and insert a key with the function name 
+	# to start physics_process again at the end of the animation	
+	set_physics_process(true)
 
 func die():
 	state_machine.travel(ANIMATION_DEATH)
